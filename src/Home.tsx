@@ -197,7 +197,7 @@ const Home: React.FC<{language?: string}> = ({language = 'vi'}) => {
           )}
         </ul>
       </section>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 };

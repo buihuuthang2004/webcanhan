@@ -1,76 +1,100 @@
 import React from 'react';
 import Footer from './components/Footer';
 
-const skills = [
-  {
-    category: 'Front-end',
-    items: [
-      'HTML5', 'CSS3', 'Sass', 'JavaScript (ES6+)', 'TypeScript', 'React', 'Redux', 'Next.js', 'TailwindCSS', 'Material UI', 'Framer Motion'
+const skillsContent = {
+  vi: {
+    title: 'Kỹ năng chuyên môn',
+    badge: 'SKILL',
+    groups: [
+      { category: 'Front-end', items: ['HTML5', 'CSS3', 'Sass', 'JavaScript (ES6+)', 'TypeScript', 'React', 'Redux', 'Next.js', 'TailwindCSS', 'Material UI', 'Framer Motion'] },
+      { category: 'Back-end', items: ['Node.js', 'Express', 'RESTful API', 'MongoDB', 'MySQL', 'Firebase', 'JWT Auth'] },
+      { category: 'UI/UX & Tools', items: ['Figma', 'Adobe XD', 'Photoshop', 'Responsive Design', 'Agile/Scrum', 'Git', 'Github', 'CI/CD', 'Jira', 'Trello'] }
+    ],
+    extraTitle: 'Kinh nghiệm nổi bật',
+    extra: [
+      '3+ năm phát triển web chuyên nghiệp, từng làm việc tại startup và công ty lớn',
+      'Thành thạo xây dựng SPA, tối ưu SEO, tối ưu hiệu suất web',
+      'Đã tham gia nhiều dự án thực tế với vai trò Fullstack/Front-end Lead',
+      'Đam mê UI/UX, luôn cập nhật công nghệ mới'
     ]
   },
-  {
-    category: 'Back-end',
-    items: [
-      'Node.js', 'Express', 'RESTful API', 'MongoDB', 'MySQL', 'Firebase', 'JWT Auth'
+  en: {
+    title: 'Professional Skills',
+    badge: 'SKILL',
+    groups: [
+      { category: 'Front-end', items: ['HTML5', 'CSS3', 'Sass', 'JavaScript (ES6+)', 'TypeScript', 'React', 'Redux', 'Next.js', 'TailwindCSS', 'Material UI', 'Framer Motion'] },
+      { category: 'Back-end', items: ['Node.js', 'Express', 'RESTful API', 'MongoDB', 'MySQL', 'Firebase', 'JWT Auth'] },
+      { category: 'UI/UX & Tools', items: ['Figma', 'Adobe XD', 'Photoshop', 'Responsive Design', 'Agile/Scrum', 'Git', 'Github', 'CI/CD', 'Jira', 'Trello'] }
+    ],
+    extraTitle: 'Outstanding Experience',
+    extra: [
+      '3+ years of professional web development, worked at startups and large companies',
+      'Proficient in building SPA, SEO optimization, web performance',
+      'Participated in many real projects as Fullstack/Front-end Lead',
+      'Passionate about UI/UX, always updating new technologies'
     ]
   },
-  {
-    category: 'UI/UX & Tools',
-    items: [
-      'Figma', 'Adobe XD', 'Photoshop', 'Responsive Design', 'Agile/Scrum', 'Git', 'Github', 'CI/CD', 'Jira', 'Trello'
+  zh: {
+    title: '专业技能',
+    badge: 'SKILL',
+    groups: [
+      { category: '前端', items: ['HTML5', 'CSS3', 'Sass', 'JavaScript (ES6+)', 'TypeScript', 'React', 'Redux', 'Next.js', 'TailwindCSS', 'Material UI', 'Framer Motion'] },
+      { category: '后端', items: ['Node.js', 'Express', 'RESTful API', 'MongoDB', 'MySQL', 'Firebase', 'JWT Auth'] },
+      { category: 'UI/UX & 工具', items: ['Figma', 'Adobe XD', 'Photoshop', '响应式设计', '敏捷/Scrum', 'Git', 'Github', 'CI/CD', 'Jira', 'Trello'] }
+    ],
+    extraTitle: '突出经验',
+    extra: [
+      '3+年专业Web开发，曾在初创公司和大公司工作',
+      '精通SPA开发、SEO优化、性能优化',
+      '参与多个实际项目，担任Fullstack/前端负责人',
+      '热爱UI/UX，持续学习新技术'
     ]
   }
-];
+};
 
-const Skills: React.FC<{language?: string}> = ({language}) => (
-  <>
-    <section className="skills-section animate-fade-in">
-      <h2 className="skills-title">
-        <span className="skills-title-icon" aria-hidden="true" style={{display:'inline-flex',alignItems:'center',verticalAlign:'middle',marginRight:'0.7em'}}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{display:'block'}}><circle cx="16" cy="16" r="16" fill="#2196f3"/><path d="M10 17l4 4 8-8" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        </span>
-        Kỹ năng chuyên môn
-        <span className="skills-title-badge">SKILL</span>
-      </h2>
-      <div className="skills-list">
-        {skills.map((group) => (
-          <div className="skill-group card-hover" key={group.category}>
-            <div className="skill-group-header" style={{display:'flex',alignItems:'center',gap:'0.7em'}}>
-              <span className="skill-group-tick" aria-hidden="true" style={{display:'inline-flex',alignItems:'center',verticalAlign:'middle'}}>
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#2196f3"/><path d="M8 14l4 4 6-8" stroke="#FFD700" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </span>
-              <h3 style={{fontWeight:800,color:'#1e2e6b',margin:0}}>{group.category}</h3>
+const Skills: React.FC<{language?: string}> = ({language = 'vi'}) => {
+  const content = skillsContent[language as 'vi'|'en'|'zh'] || skillsContent.vi;
+  return (
+    <>
+      <section className="skills-section animate-fade-in">
+        <h2 className="skills-title">
+          <span className="skills-title-icon" aria-hidden="true" style={{display:'inline-flex',alignItems:'center',verticalAlign:'middle',marginRight:'0.7em'}}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{display:'block'}}><circle cx="16" cy="16" r="16" fill="#2196f3"/><path d="M10 17l4 4 8-8" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </span>
+          {content.title}
+          <span className="skills-title-badge">{content.badge}</span>
+        </h2>
+        <div className="skills-list">
+          {content.groups.map((group) => (
+            <div className="skill-group card-hover" key={group.category}>
+              <div className="skill-group-header" style={{display:'flex',alignItems:'center',gap:'0.7em'}}>
+                <span className="skill-group-tick" aria-hidden="true" style={{display:'inline-flex',alignItems:'center',verticalAlign:'middle'}}>
+                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#2196f3"/><path d="M8 14l4 4 6-8" stroke="#FFD700" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </span>
+                <h3 style={{fontWeight:800,color:'#1e2e6b',margin:0}}>{group.category}</h3>
+              </div>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item} className={`skill-item${['React','Next.js'].includes(item)?' hot-skill':''}`}>
+                    <span className="dot"></span>
+                    {item}
+                    {['React','Next.js'].includes(item) && <span className="badge-hot">HOT</span>}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul>
-              {group.items.map((item) => (
-                <li key={item} className={`skill-item${['React','Next.js'].includes(item)?' hot-skill':''}`}>
-                  <span className="dot"></span>
-                  {item}
-                  {['React','Next.js'].includes(item) && <span className="badge-hot">HOT</span>}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div className="skills-extra animate-slide-up">
-        <h4>Kinh nghiệm nổi bật</h4>
-        <ul>
-          <li>3+ năm phát triển web chuyên nghiệp, từng làm việc tại startup và công ty lớn</li>
-          <li>Thành thạo xây dựng SPA, tối ưu SEO, tối ưu hiệu suất web</li>
-          <li>Đã tham gia nhiều dự án thực tế với vai trò Fullstack/Front-end Lead</li>
-          <li>Đam mê UI/UX, luôn cập nhật công nghệ mới</li>
-        </ul>
-      </div>
-    </section>
-    <footer className="main-footer animate-fade-in" style={{position:'relative', display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <div className="footer-content" style={{display:'flex',justifyContent:'center',gap:'2.5rem',width:'100%',maxWidth:'1100px'}}>
-        {/* ...footer columns... */}
-      </div>
-      <div className="footer-bottom" style={{textAlign:'center',marginTop:'1.2rem',width:'100%'}}>© 2025 Bùi Hữu Thắng. All rights reserved.</div>
-    </footer>
-    <Footer />
-  </>
-);
+          ))}
+        </div>
+        <div className="skills-extra animate-slide-up">
+          <h4>{content.extraTitle}</h4>
+          <ul>
+            {content.extra.map((item, idx) => <li key={idx}>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+      <Footer language={language} />
+    </>
+  );
+};
 
 export default Skills;

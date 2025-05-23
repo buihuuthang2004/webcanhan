@@ -124,7 +124,7 @@ const Projects: React.FC<{language?: string}> = ({language = 'vi'}) => {
           ))}
         </div>
       </section>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 };

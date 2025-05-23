@@ -119,7 +119,7 @@ const About: React.FC<{language?: string}> = ({language = 'vi'}) => {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 };

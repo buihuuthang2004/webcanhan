@@ -46,7 +46,6 @@ const navText = {
 const App: React.FC = () => {
   const [page, setPage] = useState<'home'|'skills'|'about'|'projects'|'contact'>('home');
   const [transitioning, setTransitioning] = useState(false);
-  const [nextPage, setNextPage] = useState(page);
   const [dropdownOpen, setDropdownOpen] = useState<string|null>(null);
   const dropdownTimeout = useRef<number|null>(null);
   const [submenuActive, setSubmenuActive] = useState<string|null>(null);
@@ -56,7 +55,6 @@ const App: React.FC = () => {
   const handleNav = (target: typeof page) => {
     if (target === page || transitioning) return;
     setTransitioning(true);
-    setNextPage(target);
     setDropdownOpen(null); // Ẩn dropdown khi chuyển trang
     setTimeout(() => {
       setPage(target);
@@ -68,10 +66,6 @@ const App: React.FC = () => {
   const handleDropdownEnter = (name: string) => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
     setDropdownOpen(name);
-  };
-  const handleDropdownLeave = () => {
-    setDropdownOpen(null);
-    setSubmenuActive(null);
   };
 
   // Submenu click highlight

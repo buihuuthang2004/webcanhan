@@ -52,8 +52,8 @@ const skillsContent = {
   }
 };
 
-const Skills: React.FC<{language?: string}> = ({language = 'vi'}) => {
-  const content = skillsContent[language as 'vi'|'en'|'zh'] || skillsContent.vi;
+const Skills: React.FC = () => {
+  const content = skillsContent['vi'];
   return (
     <>
       <section className="skills-section animate-fade-in">
@@ -92,7 +92,7 @@ const Skills: React.FC<{language?: string}> = ({language = 'vi'}) => {
           </ul>
         </div>
       </section>
-      <Footer language={language} />
+      <Footer />
     </>
   );
 };

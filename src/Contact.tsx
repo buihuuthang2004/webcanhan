@@ -66,7 +66,7 @@ const contactContent = {
   }
 };
 
-const Contact: React.FC<{language?: string}> = ({language = 'vi'}) => {
+const Contact: React.FC = () => {
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -74,7 +74,7 @@ const Contact: React.FC<{language?: string}> = ({language = 'vi'}) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-  const content = contactContent[language as 'vi'|'en'|'zh'] || contactContent.vi;
+  const content = contactContent['vi'];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,7 +158,7 @@ const Contact: React.FC<{language?: string}> = ({language = 'vi'}) => {
           </div>
         </div>
       </section>
-      <Footer language={language} />
+      <Footer language="vi" />
     </>
   );
 };
